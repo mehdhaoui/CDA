@@ -1,0 +1,72 @@
+-- Exercice 1 : création d'une procédure stockée sans paramètre
+
+-- Créez la procédure stockée Lst_fournis correspondant à la requête n°2 afficher le code des fournisseurs pour lesquels une commande a été passée.
+DELIMITER |
+CREATE PROCEDURE CommandePassee()
+BEGIN
+select numcom,numfou
+from entcom;
+END |
+DELIMITER ;
+
+
+--Exercice 2 :  création d'une procédure stockée avec un paramètre en entrée
+
+-- Créer la procédure stockée Lst_Commandes, qui liste les commandes ayant un libellé particulier dans le champ obscom (cette requête sera construite à partir de la requête n°11).
+
+
+DELIMITER |
+CREATE PROCEDURE Lst_Commandes( IN o_obscom VARCHAR(50))
+BEGIN
+select entcom.numcom,nomfou,libart,obscom,(qtecde * priuni)as'Sous total'
+from entcom
+join fournis
+on entcom.numfou =fournis.numfou
+join ligcom
+on entcom.numcom = ligcom.numcom
+join produit
+on ligcom.codart = produit.codart
+where obscom like o_obscom;
+END |
+DELIMITER ;
+
+-- Exercice 3 : création d'une procédure stockée avec plusieurs paramètres
+-- Créer la procédure stockée CA_Fournisseur, qui pour un code fournisseur et une année entrée en paramètre, calcule et restitue le CA potentiel de ce fournisseur pour l'année souhaitée (cette requête sera construite à partir de la requête n°19).
+
+-- On exécutera la requête que si le code fournisseur est valide, c'est-à-dire dans la table FOURNIS.
+
+-- Testez cette procédure avec différentes valeurs des paramètres.
+
+DELIMITER |
+CREATE PROCEDURE ca_fournisseur(
+    in p_numfou int(11),
+    in p_datcom1 timestamp,
+    in p_datcom2 timestamp)
+
+
+begin    
+select fournis.numfou, Sum((qtecde*(priuni*1.20))) as'CA'
+from ligcom
+join entcom
+on ligcom.numcom = entcom.numcom
+join fournis
+on entcom.numfou = fournis.numfou
+Where datcom BETWEEN p_datcom1 AND p_datcom2
+and fournis.numfou = p_numfou;
+
+end|
+
+    DELIMITER ;
+
+
+
+CREATE TRIGGER maj_total 
+AFTER INSERT ON lignedecommande
+FOR EACH ROW
+BEGIN
+    DECLARE id_c INT;
+    DECLARE tot DOUBLE;
+    SET id_c = NEW.id_commande; -- nous captons le numéro de commande concerné
+    SET tot = (SELECT sum(prix*quantite) FROM lignedecommande WHERE id_commande=id_c); -- on recalcul le total
+    UPDATE commande SET total=tot WHERE id=id_c; -- on stock le total dans la table commande
+END;

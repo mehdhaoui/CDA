@@ -1,0 +1,41 @@
+CREATE DATABASE filrouge;
+
+
+CREATE TABLE Employés(
+   ID_employé INT,
+   prenom_employé VARCHAR(50),
+   adresse_employé VARCHAR(100),
+   ville_employé VARCHAR(50),
+   CP_employé INT,
+   Cat_employé VARCHAR(50),
+   Nom_employé VARCHAR(50),
+   PRIMARY KEY(ID_employé)
+);
+
+CREATE TABLE Produit(
+   ID_produit INT,
+   Lib_court_produit VARCHAR(50),
+   Lib_long_produit VARCHAR(50),
+   Ref_frs_produit VARCHAR(50),
+   Prix_produit INT,
+   Photo_produit VARCHAR(50),
+   ID_employé INT NOT NULL,
+   PRIMARY KEY(ID_produit),
+   FOREIGN KEY(ID_employé) REFERENCES Employés(ID_employé)
+);
+
+CREATE TABLE Client(
+   Ref_client VARCHAR(50),
+   adresse_liv_client VARCHAR(100),
+   adresse_fact_client VARCHAR(100),
+   ID_employé INT NOT NULL,
+   PRIMARY KEY(Ref_client),
+   FOREIGN KEY(ID_employé) REFERENCES Employés(ID_employé)
+);
+
+CREATE TABLE Fournisseur(
+   Ref_frs VARCHAR(50),
+   ID_employé INT NOT NULL,
+   PRIMARY KEY(Ref_frs),
+   FOREIGN KEY(ID_employé) REFERENCES Employés(ID_employé)
+);
