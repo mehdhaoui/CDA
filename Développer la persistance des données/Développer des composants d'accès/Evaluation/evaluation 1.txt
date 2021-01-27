@@ -1,0 +1,76 @@
+-- 1 - Liste des contacts français :
+SELECT CompanyName, ContactName,ContactTitle, Phone
+FROM customers
+where country = 'France'
+
+-- 2 - Produits vendus par le fournisseur « Exotic Liquids » :
+SELECT ProductName, UnitPrice
+FROM products
+JOIN suppliers on suppliers.SupplierID = products.SupplierID
+WHERE companyname = 'exotic Liquids'
+
+-- 3 - Nombre de produits vendus par les fournisseurs Français dans l’ordre décroissant :
+SELECT suppliers.CompanyName AS 'Fournisseurs', COUNT(ProductName) AS 'Nbre produits'
+FROM products
+Join suppliers on suppliers.SupplierID = products.SupplierID 
+where suppliers.country = 'France'
+GROUP BY suppliers.CompanyName
+ORDER BY COUNT(ProductName) DESC
+
+-- 4 - Liste des clients Français ayant plus de 10 commandes :
+SELECT orders.ShipName AS 'Client', Count(OrderID) as 'Nbre commandes'
+FROM orders
+where orders.ShipCountry = 'France'
+GROUP BY orders.ShipName
+HAVING Count(OrderID) > 10
+
+-- 5 - Liste des clients ayant un chiffre d’affaires > 30.000 :
+SELECT orders.ShipName AS `client`,  Sum(`order details`.UnitPrice * `order details`.Quantity) AS `CA`,orders.ShipCountry as `pays`
+from orders
+join `order details`  on `order details`.OrderID = orders.OrderID
+GROUP BY orders.ShipName, orders.ShipCountry
+HAVING Sum(`order details`.UnitPrice * `order details`.Quantity) > 30000
+order by  Sum(`order details`.UnitPrice * `order details`.Quantity) DESC;
+
+-- 6 – Liste des pays dont les clients ont passé commande de produits fournis par « Exotic
+-- Liquids » :
+
+SELECT orders.ShipCountry as `Pays`
+FROM orders
+join `order details` on  `order details`.OrderID = orders.OrderID
+join products on products.ProductID = `order details`.ProductID
+join suppliers on suppliers.SupplierID = products.SupplierID
+where suppliers.CompanyName = 'Exotic Liquids'
+GROUP BY orders.ShipCountry
+ORDER BY orders.ShipCountry
+
+-- 7 – Montant des ventes de 1997 :
+
+SELECT Sum(`order details`.UnitPrice * `order details`.Quantity) as `Montant Ventes 97`
+FROM `order details`
+join orders on orders.OrderID = `order details`.OrderID
+WHERE YEAR(orders.OrderDate)='1997'
+
+-- 8 – Montant des ventes de 1997 mois par mois :
+
+
+SELECT MONTH(orders.OrderDate) as `Mois 97`, Sum(`order details`.UnitPrice * `order details`.Quantity) as `Montant Ventes 97`
+FROM orders
+join `order details` on `order details`.OrderID = orders.OrderID
+where YEAR(orders.OrderDate)='1997'
+GROUP BY MONTH(orders.OrderDate)
+
+-- 9 – Depuis quelle date le client « Du monde entier » n’a plus commandé ?
+
+
+SELECT orders.OrderDate as `date de dernière commande`
+from orders
+WHERE orders.ShipName = 'Du monde entier'
+order by orders.OrderDate DESC 
+LIMIT 1;
+
+-- 10 – Quel est le délai moyen de livraison en jours ?
+
+
+SELECT ROUND(avg(DATEDIFF(orders.ShippedDate,orders.OrderDate))) as `Délai moyen de livraison en jours`
+From orders

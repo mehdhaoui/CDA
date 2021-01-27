@@ -1,0 +1,28 @@
+1)
+DELIMITER |
+
+CREATE TRIGGER after_produit_update 
+AFTER UPDATE ON produit
+FOR EACH ROW BEGIN 
+DECLARE id INT;
+DECLARE Diff INT; 
+SET id=OLD.codart; 
+IF NEW.stkphy >5 THEN 
+SET Diff=(NEW.stkphy-5 );
+ELSE 
+SET Diff=( 5-NEW.stkphy) ;
+END IF;
+IF (NEW.stkphy < 5) 
+THEN
+   IF (id IN (SELECT codart FROM produit )) 
+   THEN
+      UPDATE produit
+      SET qteann= 100
+      WHERE codart=id;
+   ELSE
+      INSERT INTO produit(codart,qteann) VALUES (id,qteann); 
+   END IF; 
+END IF;
+END |
+
+DELIMITER ;

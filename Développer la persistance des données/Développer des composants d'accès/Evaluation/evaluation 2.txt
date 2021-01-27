@@ -1,0 +1,31 @@
+1)
+
+DELIMITER |
+
+CREATE PROCEDURE DateDerniereCommande(In Name VARCHAR(50))
+
+BEGIN
+SELECT orders.OrderDate as `date de dernière commande`
+from orders
+WHERE orders.ShipName = Name
+order by orders.OrderDate DESC 
+LIMIT 1;
+END |
+
+DELIMITER ;
+
+
+2)
+
+
+DELIMITER |
+
+CREATE PROCEDURE Average()
+
+BEGIN
+SELECT ROUND(avg(DATEDIFF(orders.ShippedDate,orders.OrderDate))) as `Délai moyen de livraison en jours`
+From orders;
+END |
+
+DELIMITER ;
+87
