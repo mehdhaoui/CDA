@@ -2,8 +2,7 @@
 
 require_once "database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
-$requete = $db->query("SELECT disc_id, disc_title, disc_year, disc_picture, 
-       disc_label, disc_genre,disc_price, artist_name 
+$requete = $db->query("SELECT *
 FROM disc LEFT JOIN artist on disc.artist_id = artist.artist_id
 ORDER BY disc_id ASC"); // requete + résultat
 if (!$requete)

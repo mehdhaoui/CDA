@@ -3,10 +3,9 @@
 include "Add_formController.php";
 require_once "database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
-$requete = $db->query("SELECT disc_id, disc_title, disc_year, disc_picture, 
-       disc_label, disc_genre,disc_price, artist_name 
-FROM disc LEFT JOIN artist on disc.artist_id = artist.artist_id
-ORDER BY disc_id ASC"); // requete + résultat
+$requete = $db->query("SELECT *
+FROM artist"
+); // requete + résultat
 
 ?>
 <!doctype html>
@@ -40,9 +39,10 @@ ORDER BY disc_id ASC"); // requete + résultat
                         <li>label <?= $label ?></li>
                         <li>genre : <?= $genre ?></li>
                         <li>price : <?= $price ?></li>
-                        <li>artist name : <?= $artistname ?></li>
+                        <li>artist name : <?= $artistid ?></li>
                     </ul>
                     <a  class="btn btn-danger" href="disc.php">retour</a>
+                    <br>
                         <?php
                     } else {
                         ?>
@@ -101,10 +101,19 @@ ORDER BY disc_id ASC"); // requete + résultat
             <!--artist name-->
             <div class="form-group">
                 <label>artist name</label>
-                <input type="texte" class="form-control" placeholder="artist name" id="artistname" name="artistname" value="<?= isset($_POST['artistname']) ? $_POST['artistname'] : '' ?>">
+                <select class="form-select" aria-label="Default select example" id="artistid" name="artistid">
+                    <option selected>Sélectionnez l'artiste</option>
+                    <?php
+                    while($data = $requete->fetch(PDO::FETCH_OBJ) )
+                    { ?>
+                        <option value="<?= $data->artist_id ?>"><?= $data->artist_name ?></option>
+                   <?php }
+                    ?>
+                </select>
                 <small></small>
                 <span class="error"><?= isset($formError['artistname']) ? $formError['artistname'] : ''  ?> </span>
             </div>
+        <br>
 
             <!-- bouton envoyer -->
             <div class="d-grid gap-2  mx-auto">

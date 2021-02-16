@@ -2,7 +2,9 @@
 
 require_once "database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
-$requete = $db->prepare("select * from disc where disc_id=?");
+$requete = $db->prepare("SELECT *
+FROM disc LEFT JOIN artist on disc.artist_id = artist.artist_id
+where disc_id=?");
 $requete->execute(array($_GET["disc_id"]));
 $disc = $requete->fetch(PDO::FETCH_OBJ);
 ?>
@@ -42,6 +44,7 @@ $disc = $requete->fetch(PDO::FETCH_OBJ);
     Disc N° <?= $disc->disc_id ?><br>
     Disc name <?= $disc->disc_title ?><br>
     Disc year <?= $disc->disc_year ?><br>
+    artist name <?= $disc->artist_name ?><br>
 
     <!-- bouton modifier et retour -->
     <a  class="btn btn-primary" href="disc_update.php">modifier</a>

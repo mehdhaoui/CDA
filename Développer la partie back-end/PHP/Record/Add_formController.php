@@ -11,7 +11,7 @@ $regYear='/^\d{1,4}$/';
 $regLabel = '/^[A-Za-z-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]{1,64}$/';
 $regGenre = '/^[A-Za-z-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]{1,64}$/';
 $regPrice = '/^\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})$/';
-$regArtistName = '/^[A-Za-z-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]{1,64}$/';
+
 
 
 // si le form est envoyé
@@ -98,20 +98,16 @@ if(isset($_POST['submit'])){
 
                      // artistname
     //Si le champ contient des elements
-    if(!empty($_POST['artistname'])){
-        // verification de l'élément avec la regex
-        if(preg_match($regArtistName, $_POST['artistname'])){
-            // stockage de la donnée sécurisée dans une variable
-            $artistname = htmlspecialchars($_POST['artistname']);
+    if(!empty($_POST['artistid'])){
+            $artistid = $_POST['artistid'];
         }else{
-            $formError['artistname'] = 'le nom de l\'artiste n\'est pas valide.';
-        }
-    }else{
-        $formError['artistname'] = 'le champ nom de l\'artiste est vide.';
+        $formError['artistid'] = 'le champ nom de l\'artiste est vide.';
     }
+
+            // DB
     if (isset($_POST['submit']) && count($formError) === 0) {
-        $requete = "INSERT INTO disc (disc_title, disc_year, disc_picture, disc_label, disc_genre, disc_price) 
-VALUES('$title','$year','$picture','$label','$genre','$price')";
+        $requete = "INSERT INTO disc (disc_title, disc_year, disc_picture, disc_label, disc_genre, disc_price, artist_id) 
+VALUES('$title','$year','$picture','$label','$genre','$price','$artistid')";
         $result = $db->query($requete);
     }else{
         echo "error";
