@@ -69,16 +69,17 @@ if ($requete->rowCount() == 0)
         <tbody>
         <?php
         while($data = $requete->fetch(PDO::FETCH_OBJ) )
-        {
-            echo"<td>".$data->disc_id."</td>";
-            echo"<td><a href=\"details_disc.php?disc_id=$data->disc_id\">$data->disc_title</a></td>";
-            echo"<td>".$data->disc_year."</td>";
-            echo "<td><img src=\"assets\img//$data->disc_picture\"width=70 height=50 class=\"img-fluid\" alt=\"$data->disc_title\"></td>";
-            echo"<td>".$data->disc_label."</td>";
-            echo"<td>".$data->disc_genre."</td>";
-            echo"<td>".$data->disc_price."</td>";
-            echo"<td>".$data->artist_name."</td>";
-            echo"</tr>";
+        {?>
+            <td><?= $data->disc_id ?></td>
+            <td><a href="details_disc.php?disc_id=<?= $data->disc_id?>"><?= $data->disc_title?></a></td>
+            <td><?= $data->disc_year ?></td>
+            <td><img src="assets\img\<?= $data->disc_picture ?>"width=70 height=50 class="img-fluid" alt="<?= $data->disc_title ?>"></td>
+            <td><?= $data->disc_label ?></td>
+            <td><?= $data->disc_genre ?></td>
+            <td><?= $data->disc_price ?></td>
+            <td><?= $data->artist_name ?></td>
+            </tr>
+        <?php
         }
         ?>
         </tbody>

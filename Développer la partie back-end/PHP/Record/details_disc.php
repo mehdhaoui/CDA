@@ -41,13 +41,13 @@ $disc = $requete->fetch(PDO::FETCH_OBJ);
     <body>
     <h1> disc</h1>
     <img src="assets/img//<?= $disc->disc_picture ?>" width=300 height=100 class="img-fluid " alt="<?= $disc->disc_name ?>"><br>
-    Disc N° <?= $disc->disc_id ?><br>
-    Disc name <?= $disc->disc_title ?><br>
-    Disc year <?= $disc->disc_year ?><br>
-    artist name <?= $disc->artist_name ?><br>
+    Disc N° : <?= $disc->disc_id ?><br>
+    Disc name : <?= $disc->disc_title ?><br>
+    Disc year : <?= $disc->disc_year ?><br>
+    artist name : <?= $disc->artist_name ?><br>
 
     <!-- bouton modifier et retour -->
-    <a  class="btn btn-primary" href="disc_update.php">modifier</a>
+    <a  class="btn btn-primary" href="disc_update.php?disc_id=<?= $disc->disc_id?>">modifier</a>
     <a  class="btn btn-danger" href="disc.php">retour</a>
 
     <footer>
