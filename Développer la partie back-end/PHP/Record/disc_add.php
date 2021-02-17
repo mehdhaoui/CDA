@@ -41,7 +41,7 @@ FROM artist"
                         ?>
 
         </div>
-    <form action="#" class="form_add" id="form_add" name="form_add" method="post">
+    <form action="#" class="form" id="form" name="form" method="post">
 
             <!--TITLE -->
         <div class="form-group">
@@ -122,15 +122,10 @@ FROM artist"
     <footer>
     </footer>
 </div> <!-- div container -->
-<!-- JQUERY CDN -->
-    <!-- JS bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
-
-    <!-- Jquery Validator CDN-->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js'></script>
+</body>
+<!--SCRIPTS-->
+<!-- BOOTSTRAP script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <!-- JS validator file-->
-<!--<script type="text/javascript" src="assets/js/validation_form.js"></script>-->
+<script type="text/javascript" src="assets/js/validation_form.js"></script>
 </html>

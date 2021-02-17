@@ -1,6 +1,6 @@
 
 // Création des variables de recherche des elements par ID
-const form = document.getElementById('form_add');
+const form = document.getElementById('form');
 const title = document.getElementById('title');
 const year = document.getElementById('year');
 const picture = document.getElementById('picture');
@@ -12,7 +12,7 @@ const artistname = document.getElementById('artistid');
 //Creation tableau d'erreur
 var tab= [];
 
-form.addEventListener('blur',(e)=>{
+form.addEventListener('focusout',(e)=>{
     e.preventDefault();
     checkInputs();
 });
@@ -102,9 +102,6 @@ function checkInputs(){
         erreurMsg(artistname, 'le nom d\'artiste ne peut être vide');
     }else{
         successMsg(artistname,'c\'est correct!');
-    }
-    if(tab.length < 0){
-        document.getElementById('form_add').submit();
     }
 
 }
