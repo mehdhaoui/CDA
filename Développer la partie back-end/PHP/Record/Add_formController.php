@@ -104,7 +104,7 @@ if(isset($_POST['submit'])){
         $formError['artistid'] = 'le champ nom de l\'artiste est vide.';
     }
 
-            // DB
+            // Ajouts des données dans la BDD si le formulaire est envoyé avec succès
     if (isset($_POST['submit']) && count($formError) === 0) {
         $requete = "INSERT INTO disc (disc_title, disc_year, disc_picture, disc_label, disc_genre, disc_price, artist_id) 
 VALUES('$title','$year','$picture','$label','$genre','$price','$artistid')";

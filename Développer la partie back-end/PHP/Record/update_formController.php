@@ -7,10 +7,11 @@ $formError =[];
 // regex
 $regTitle = '/^[A-Za-z-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]{1,64}$/';
 $regYear='/^\d{1,4}$/';
-//picture n'a pas de regex
 $regLabel = '/^[A-Za-z-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]{1,64}$/';
 $regGenre = '/^[A-Za-z-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]{1,64}$/';
 $regPrice = '/^\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})$/';
+
+
 
 
 
@@ -104,7 +105,7 @@ if(isset($_POST['submit'])){
         $formError['artistid'] = 'le champ nom de l\'artiste est vide.';
     }
 
-    // DB
+    // requête de modification des données si envoi du formulaire avec succès
     if (isset($_POST['submit']) && count($formError) === 0) {
         $requete = "UPDATE disc
 SET disc_title ='$title', disc_year ='$year' ,disc_picture='$picture' disc_label ='$label', disc_price ='$price', artist_id='$artistid'";

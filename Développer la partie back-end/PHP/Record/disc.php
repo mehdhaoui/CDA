@@ -1,20 +1,22 @@
 <?php
-
-require_once "database.php"; // Inclusion de la connexion a la bdd
-$db = connexionBase(); //fonction de connexion a la bdd
+// Inclusion de la connexion a la bdd
+require_once "database.php";
+//fonction de connexion a la bdd
+$db = connexionBase();
+// requete + résultat
 $requete = $db->query("SELECT *
 FROM disc LEFT JOIN artist on disc.artist_id = artist.artist_id
-ORDER BY disc_id ASC"); // requete + résultat
+ORDER BY disc_id ASC");
+//Si erreur de requete
 if (!$requete)
 {
     $tableauErreurs = $db->errorInfo();
     echo $tableauErreur[2];
     die("Erreur dans la requête");
 }
-
+//Si pas de Résultats
 if ($requete->rowCount() == 0)
 {
-    // Pas d'enregistrement
     die("La table est vide");
 }
 ?>
@@ -49,7 +51,7 @@ if ($requete->rowCount() == 0)
         </nav>
     </header>
     <body>
-    <h1> disc</h1>
+    <h1> disc</h1> <a  class="btn btn-primary mb-2" href="disc_add.php">ajouter un nouveau disque</a>
     <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
@@ -84,7 +86,7 @@ if ($requete->rowCount() == 0)
         ?>
         </tbody>
     </table>
-<a  class="btn btn-primary" href="disc_add.php">ajouter</a>
+
 
 
     <footer>

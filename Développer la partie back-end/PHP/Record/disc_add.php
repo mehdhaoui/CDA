@@ -1,6 +1,6 @@
 
 <?php
-include "Add_formController.php";
+include "Add_formController.php"; //Inclusion du fichier script
 require_once "database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
 $requete = $db->query("SELECT *
@@ -32,17 +32,10 @@ FROM artist"
                 if (isset($_POST['submit']) && count($formError) === 0) {
 
                     ?>
-                    <p>Voici vos données, elles ont étés insérés dans la base de données.</p>
-                    <ul>
-                        <li>title : <?= $title ?></li>
-                        <li>year <?= $year ?></li>
-                        <li>label <?= $label ?></li>
-                        <li>genre : <?= $genre ?></li>
-                        <li>price : <?= $price ?></li>
-                        <li>artist name : <?= $artistid ?></li>
-                    </ul>
-                    <a  class="btn btn-danger" href="disc.php">retour</a>
+                    <p>Vos données ont étés insérés dans la base de données.</p>
                     <br>
+                    <a  class="btn btn-secondary mb-1 " href="disc.php">retour</a>
+
                         <?php
                     } else {
                         ?>
@@ -93,7 +86,7 @@ FROM artist"
             <!--price -->
             <div class="form-group">
                 <label>price</label>
-                <input type="texte" class="form-control" placeholder="price" id="price" name="price" value="<?= isset($_POST['price']) ? $_POST['price'] : '' ?>">
+                <input type="texte" class="form-control" placeholder="price (format 10.00)" id="price" name="price" value="<?= isset($_POST['price']) ? $_POST['price'] : '' ?>">
                 <small></small>
                 <span class="error"><?= isset($formError['genre']) ? $formError['genre'] : ''  ?> </span>
             </div>
@@ -102,7 +95,7 @@ FROM artist"
             <div class="form-group">
                 <label>artist name</label>
                 <select class="form-select" aria-label="Default select example" id="artistid" name="artistid">
-                    <option selected>Sélectionnez l'artiste</option>
+                    <option selected></option>
                     <?php
                     while($data = $requete->fetch(PDO::FETCH_OBJ) )
                     { ?>
@@ -119,10 +112,11 @@ FROM artist"
             <div class="d-grid gap-2  mx-auto">
                 <input type="submit" value="Ajouter"class="btn btn-success" id="submit" name="submit">
                 <a  class="btn btn-danger" href="disc.php">retour</a>
+                <br>
             </div>
     </form>
 
-                            <?php // fermeture de ligne 46
+        <?php // fermeture de ligne 40
                             } ?>
 
     <footer>

@@ -47,8 +47,9 @@ $disc = $requete->fetch(PDO::FETCH_OBJ);
     artist name : <?= $disc->artist_name ?><br>
 
     <!-- bouton modifier et retour -->
-    <a  class="btn btn-primary" href="disc_update.php?disc_id=<?= $disc->disc_id?>">modifier</a>
-    <a  class="btn btn-danger" href="disc.php">retour</a>
+    <a  class="btn btn-success" href="disc_update.php?disc_id=<?= $disc->disc_id?>">modifier</a>
+    <a  class="btn btn-danger" href="disc_delete.php?disc_id=<?= $disc->disc_id?>">supprimer</a>
+    <a  class="btn btn-primary" href="disc.php">retour</a>
 
     <footer>
 

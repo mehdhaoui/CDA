@@ -30,7 +30,7 @@ $artist = $request->fetch(PDO::FETCH_OBJ);
 </head>
 <div class="container">
     <header>
-        <h3> Formulaire de modification</h3>
+        <h3>Formulaire de modification</h3>
     </header>
     <body>
     <div class="col-sm-6 offset-sm-3">
@@ -38,16 +38,9 @@ $artist = $request->fetch(PDO::FETCH_OBJ);
         if (isset($_POST['submit']) && count($formError) === 0) {
 
             ?>
-            <p>Vos données ont étés modifiés la base de données.</p>
-            <ul>
-                <li>title : <?= $title ?></li>
-                <li>year <?= $year ?></li>
-                <li>label <?= $label ?></li>
-                <li>genre : <?= $genre ?></li>
-                <li>price : <?= $price ?></li>
-                <li>artist name : <?= $artistid ?></li>
-            </ul>
-            <a  class="btn btn-danger" href="disc.php">retour</a>
+            <p>Vos données ont étés modifiés dans la base de données.</p>
+            <br>
+            <a  class="btn btn-secondary mb-1" href="disc.php">retour</a>
             <br>
             <?php
         } else {
@@ -109,22 +102,22 @@ $artist = $request->fetch(PDO::FETCH_OBJ);
 
             <label>artist name</label>
             <select class="form-select" aria-label="Default select example" id="artistid" name="artistid" >
-                <option selected>Sélectionnez l'artiste</option>
+                <option selected></option>
                 <?php
                 while($data = $request->fetch(PDO::FETCH_OBJ) )
                 {?>
-                    <option value="<?= $data->artist_id ?>"><?= $data->artist_name ?></option>
+                    <option value="<?= $data->artist_id; ?>"><?= $data->artist_name; ?></option>
                 <?php } ?>
             </select>
             <small></small>
-            <span class="error"><?= isset($formError['artistname']) ? $formError['artistname'] : ''  ?> </span>
+            <span class="error"><?= isset($formError['artistid']) ? $formError['artistid'] : ''  ?> </span>
         </div>
         <br>
 
         <!-- bouton envoyer -->
-        <div class="d-grid gap-2  mx-auto">
+        <div class="d-grid gap-2 mx-auto">
             <input type="submit" value="Modifier"class="btn btn-success" id="submit" name="submit">
-            <a  class="btn btn-danger" href="disc.php">retour</a>
+            <a  class="btn btn-danger " href="disc.php">retour</a>
         </div>
     </form>
 
