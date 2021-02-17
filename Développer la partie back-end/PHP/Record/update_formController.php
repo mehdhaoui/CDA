@@ -108,7 +108,7 @@ if(isset($_POST['submit'])){
     // requête de modification des données si envoi du formulaire avec succès
     if (isset($_POST['submit']) && count($formError) === 0) {
         $requete = "UPDATE disc
-SET disc_title ='$title', disc_year ='$year' ,disc_picture='$picture' disc_label ='$label', disc_price ='$price', artist_id='$artistid'";
+SET disc_title ='$title', disc_year ='$year' ,disc_picture='$picture', disc_label ='$label', disc_price ='$price', artist_id='$artistid' WHERE disc_id ='".$_GET['disc_id']."'";
         $result = $db->query($requete);
     }else{
         echo "error";

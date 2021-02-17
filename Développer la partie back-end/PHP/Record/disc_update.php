@@ -1,6 +1,6 @@
 
 <?php
-include "Add_formController.php";
+include "update_formController.php";
 require_once "database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
 
@@ -51,7 +51,7 @@ $artist = $request->fetch(PDO::FETCH_OBJ);
 
         <!--TITLE -->
         <div class="form-group">
-            <label>title</label>
+            <label>tie</label>
             <input type="texte" class="form-control" placeholder="title" id="title" name="title"  value="<?= $disc->disc_title; ?>">
             <small></small>
             <span class="error"><?= isset($formError['title']) ? $formError['title'] : ''  ?> </span>
@@ -94,7 +94,7 @@ $artist = $request->fetch(PDO::FETCH_OBJ);
             <label>price</label>
             <input type="texte" class="form-control" placeholder="price" id="price" name="price" value="<?= $disc->disc_price; ?>">
             <small></small>
-            <span class="error"><?= isset($formError['genre']) ? $formError['genre'] : ''  ?> </span>
+            <span class="error"><?= isset($formError['price']) ? $formError['price'] : ''  ?> </span>
         </div>
 
         <!--artist name-->

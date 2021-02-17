@@ -110,6 +110,6 @@ if(isset($_POST['submit'])){
 VALUES('$title','$year','$picture','$label','$genre','$price','$artistid')";
         $result = $db->query($requete);
     }else{
-        echo "error";
+        echo "";
     }
 }

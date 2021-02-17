@@ -22,11 +22,11 @@ FROM artist"
     <!-- css file -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<div class="container">
+    <body>
+    <div class="container">
     <header>
         <h3> Formulaire ajout de disque</h3>
     </header>
-    <body>
         <div class="col-sm-6 offset-sm-3">
                 <?php
                 if (isset($_POST['submit']) && count($formError) === 0) {
@@ -41,7 +41,7 @@ FROM artist"
                         ?>
 
         </div>
-    <form action="#" class="form" id="form" method="post">
+    <form action="#" class="form_add" id="form_add" name="form_add" method="post">
 
             <!--TITLE -->
         <div class="form-group">
@@ -88,7 +88,7 @@ FROM artist"
                 <label>price</label>
                 <input type="texte" class="form-control" placeholder="price (format 10.00)" id="price" name="price" value="<?= isset($_POST['price']) ? $_POST['price'] : '' ?>">
                 <small></small>
-                <span class="error"><?= isset($formError['genre']) ? $formError['genre'] : ''  ?> </span>
+                <span class="error"><?= isset($formError['price']) ? $formError['price'] : ''  ?> </span>
             </div>
 
             <!--artist name-->
@@ -104,7 +104,7 @@ FROM artist"
                     ?>
                 </select>
                 <small></small>
-                <span class="error"><?= isset($formError['artistname']) ? $formError['artistname'] : ''  ?> </span>
+                <span class="error"><?= isset($formError['artistid']) ? $formError['artistid'] : ''  ?> </span>
             </div>
         <br>
 
@@ -122,7 +122,15 @@ FROM artist"
     <footer>
     </footer>
 </div> <!-- div container -->
-<!-- Jquery & JS bootstrap -->
+<!-- JQUERY CDN -->
+    <!-- JS bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+    <!-- Jquery Validator CDN-->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js'></script>
+<!-- JS validator file-->
 <!--<script type="text/javascript" src="assets/js/validation_form.js"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script></body>
 </html>

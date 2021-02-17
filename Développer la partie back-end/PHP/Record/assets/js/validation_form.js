@@ -1,17 +1,18 @@
 
-
-
 // Création des variables de recherche des elements par ID
-const form = document.getElementById('form');
+const form = document.getElementById('form_add');
 const title = document.getElementById('title');
 const year = document.getElementById('year');
 const picture = document.getElementById('picture');
 const label = document.getElementById('label');
 const genre = document.getElementById('genre');
 const price = document.getElementById('price');
-const artistname = document.getElementById('artistname');
+const artistname = document.getElementById('artistid');
 
-form.addEventListener('submit',(e)=>{
+//Creation tableau d'erreur
+var tab= [];
+
+form.addEventListener('blur',(e)=>{
     e.preventDefault();
     checkInputs();
 });
@@ -34,8 +35,10 @@ function checkInputs(){
 
     //TITLE
     if(titleValue === '') {
+        tab['title'] = "faux";
         erreurMsg(title, 'le titre ne peut être vide');
     }else if(!regTitle(titleValue)){
+        tab['title'] = "faux";
         erreurMsg(title, 'le titre n\'est pas conforme');
     }
     else{
@@ -44,8 +47,10 @@ function checkInputs(){
 
     // YEAR
     if(yearValue === '') {
+        tab['year'] = "faux";
         erreurMsg(year, 'l\'année ne peut être vide');
     }else if(!regYear(yearValue)) {
+        tab['year'] = "faux";
         erreurMsg(year, 'le prix n\'est pas valide');
     }else{
         successMsg(year,'c\'est correct!');
@@ -53,6 +58,7 @@ function checkInputs(){
 
     // PICTURE
     if(pictureValue === '') {
+        tab['picture'] = "faux";
         erreurMsg(picture, 'l\'image ne peut être vide');
     }else{
         successMsg(picture,'c\'est correct!');
@@ -60,8 +66,10 @@ function checkInputs(){
 
     //LABEL
     if(labelValue === '') {
+        tab['label'] = "faux";
         erreurMsg(label, 'le label ne peut être vide');
     }else if(!regLabel(labelValue)){
+        tab['label'] = false;
             erreurMsg(label, 'le label n\'est pas conforme');
         }else{
         successMsg(label,'c\'est correct!');
@@ -69,8 +77,10 @@ function checkInputs(){
 
     //GENRE
     if(genreValue === '') {
+        tab['genre'] = "faux";
         erreurMsg(genre, 'le genre ne peut être vide');
     }else if(!regGenre(genreValue)){
+        tab['genre'] = "faux";
         erreurMsg(genre, 'le genre n\'est pas conforme');
     }else{
         successMsg(genre,'c\'est correct!');
@@ -78,21 +88,25 @@ function checkInputs(){
 
     //PRICE
     if(priceValue === '') {
+        tab['price'] = "faux";
         erreurMsg(price, 'le prix ne peut être vide');
     }else if(!regPrice(priceValue)) {
+        tab['price'] = "faux";
         erreurMsg(price, 'le prix n\'est pas valide');
     }else{
         successMsg(price,'c\'est correct!');
     }
     //ARTISTNAME
     if(aristnameValue === '') {
+        tab['artistid'] = "faux";
         erreurMsg(artistname, 'le nom d\'artiste ne peut être vide');
-    }else if(!regArtistName(aristnameValue)){
-        erreurMsg(artistname, 'le nom d\'artiste n\'est pas valide');
-    }
-    else{
+    }else{
         successMsg(artistname,'c\'est correct!');
     }
+    if(tab.length < 0){
+        document.getElementById('form_add').submit();
+    }
+
 }
 ////////////////////////////
 /////    REGEX  ///////////
