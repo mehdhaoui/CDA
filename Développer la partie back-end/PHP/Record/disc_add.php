@@ -1,5 +1,9 @@
 
 <?php
+//ajout de la page CSS dans le header
+$style = 'style.css';
+//inclusion du header
+include 'header.php';
 include "Add_formController.php"; //Inclusion du fichier script
 require_once "database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
@@ -8,39 +12,24 @@ FROM artist"
 ); // requete + résultat
 
 ?>
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Record</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <!-- css file -->
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-    <body>
+<!--    BODY AVEC CLASS POUR LE CSS-->
+    <body class="formbody">
     <div class="container">
-    <header>
-        <h3> Formulaire ajout de disque</h3>
+        <h3 class="text-center"> Formulaire ajout de disque</h3>
     </header>
         <div class="col-sm-6 offset-sm-3">
                 <?php
                 if (isset($_POST['submit']) && count($formError) === 0) {
 
                     ?>
-                    <p>Vos données ont étés insérés dans la base de données.</p>
+                    <p class="text-center">Vos données ont étés insérés dans la base de données.</p>
                     <br>
                     <a  class="btn btn-secondary mb-1 " href="disc.php">retour</a>
-
                         <?php
                     } else {
                         ?>
-
         </div>
+<!--        FORMULAIRE-->
     <form action="#" class="form" id="form" name="form" method="post">
 
             <!--TITLE -->
@@ -115,17 +104,10 @@ FROM artist"
                 <br>
             </div>
     </form>
-
-        <?php // fermeture de ligne 40
+        <?php // fermeture de ligne 27
                             } ?>
 
-    <footer>
-    </footer>
 </div> <!-- div container -->
 </body>
-<!--SCRIPTS-->
-<!-- BOOTSTRAP script -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-<!-- JS validator file-->
-<script type="text/javascript" src="assets/js/validation_form.js"></script>
-</html>
+<!--inclusion du footer-->
+<?php include 'footer.php' ?>

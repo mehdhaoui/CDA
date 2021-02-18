@@ -1,21 +1,12 @@
 <?php
+//inclusion du header
+include 'header.php';
 require_once "database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
 $requete = $db->query("SELECT* FROM artist ORDER BY artist_id ASC"); // requete + résultat
 ?>
-
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Record</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-</head>
 <div class="container-fluid"> <!-- se ferme au pied de page -->
+<!--    NAVBAR-->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="index.php">Accueil</a>
@@ -34,11 +25,12 @@ $requete = $db->query("SELECT* FROM artist ORDER BY artist_id ASC"); // requete 
             </div>
         </nav>
     </header>
+<!--    BODY-->
     <body>
     <h1>artist</h1>
-
+<!--TABLEAU-->
     <table class="table table-hover">
-        <thead class="thead-dark">
+        <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -59,12 +51,7 @@ $requete = $db->query("SELECT* FROM artist ORDER BY artist_id ASC"); // requete 
             ?>
         </tbody>
     </table>
-
-    <footer>
-        <!-- Jquery & JS bootstrap -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    </footer>
 </div> <!-- div container -->
 </body>
-</html>
+<!--    inclusion du footer-->
+<?php include "footer.php"; ?>
