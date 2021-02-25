@@ -1,5 +1,5 @@
 <!--inclusion du header-->
-<?php  include 'header.php';?>
+<?php include 'header.php';?>
     <div class="container-fluid"> <!-- se ferme au pied de page -->
         <!-- navbar -->
         <header>
@@ -15,6 +15,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="disc.php">Disc</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="signup.php">Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.php">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Log out</a>
                         </li>
                     </ul>
                 </div>

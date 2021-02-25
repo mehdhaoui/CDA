@@ -21,6 +21,15 @@ $requete = $db->query("SELECT* FROM artist ORDER BY artist_id ASC"); // requete 
                     <li class="nav-item">
                         <a class="nav-link" href="disc.php">Disc</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signup.php">Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Login</a>
+                    </li>
                 </ul>
             </div>
         </nav>

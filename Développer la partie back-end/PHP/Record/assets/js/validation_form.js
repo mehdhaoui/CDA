@@ -12,12 +12,6 @@ const artistname = document.getElementById('artistid');
 //Creation tableau d'erreur
 var tab= [];
 
-form.addEventListener('focusout',(e)=>{
-    e.preventDefault();
-    checkInputs();
-});
-
-
 // verification des valeurs des inputs
 function checkInputs(){
     const titleValue = title.value.trim();
@@ -35,72 +29,79 @@ function checkInputs(){
 
     //TITLE
     if(titleValue === '') {
-        tab['title'] = "faux";
+        tab['0'] = false;
         erreurMsg(title, 'le titre ne peut être vide');
     }else if(!regTitle(titleValue)){
-        tab['title'] = "faux";
+        tab['0'] = false;
         erreurMsg(title, 'le titre n\'est pas conforme');
     }
     else{
+        tab['0'] = true;
             successMsg(title,'c\'est correct!');
         }
 
     // YEAR
     if(yearValue === '') {
-        tab['year'] = "faux";
+        tab['1'] = false;
         erreurMsg(year, 'l\'année ne peut être vide');
     }else if(!regYear(yearValue)) {
-        tab['year'] = "faux";
+        tab['1'] = false;
         erreurMsg(year, 'le prix n\'est pas valide');
     }else{
+        tab['1'] = true;
         successMsg(year,'c\'est correct!');
     }
 
     // PICTURE
     if(pictureValue === '') {
-        tab['picture'] = "faux";
+        tab['2'] = false;
         erreurMsg(picture, 'l\'image ne peut être vide');
     }else{
+        tab['2'] = true;
         successMsg(picture,'c\'est correct!');
     }
 
     //LABEL
     if(labelValue === '') {
-        tab['label'] = "faux";
+        tab['3'] = false;
         erreurMsg(label, 'le label ne peut être vide');
     }else if(!regLabel(labelValue)){
-        tab['label'] = false;
+        tab['3'] = false;
             erreurMsg(label, 'le label n\'est pas conforme');
         }else{
+        tab['3'] = true;
         successMsg(label,'c\'est correct!');
     }
 
     //GENRE
     if(genreValue === '') {
-        tab['genre'] = "faux";
+        tab['4'] = false;
         erreurMsg(genre, 'le genre ne peut être vide');
     }else if(!regGenre(genreValue)){
-        tab['genre'] = "faux";
+        tab['4'] = false;
         erreurMsg(genre, 'le genre n\'est pas conforme');
     }else{
+        tab['4'] = true;
         successMsg(genre,'c\'est correct!');
     }
 
     //PRICE
     if(priceValue === '') {
-        tab['price'] = "faux";
+        tab['5'] = false;
         erreurMsg(price, 'le prix ne peut être vide');
     }else if(!regPrice(priceValue)) {
-        tab['price'] = "faux";
+        tab['5'] = false;
         erreurMsg(price, 'le prix n\'est pas valide');
     }else{
+        tab['5'] = true;
         successMsg(price,'c\'est correct!');
     }
     //ARTISTNAME
     if(aristnameValue === '') {
-        tab['artistid'] = "faux";
+        tab['6'] = false;
         erreurMsg(artistname, 'le nom d\'artiste ne peut être vide');
     }else{
+        tab['6'] = true;
         successMsg(artistname,'c\'est correct!');
     }
 
@@ -152,3 +153,29 @@ function successMsg(input,message){
     small.innerText = message;
     formGroup.className = 'form-group success';
 }
+
+
+form.addEventListener('focusout',(e)=>{
+    checkInputs();
+});
+
+var ok=true; // boolean true seulement si les saisies sont correctes
+
+//submit
+var sub=document.getElementById("submit");
+sub.addEventListener("click",function (event){
+    checkInputs();
+    for (var i=0; i< tab.length;i++){
+        if (tab[i] ==false){
+            ok=false;
+        }else{
+            ok=true;
+        }
+    }
+
+    if (ok==true) {
+        form.submit();
+    }else {
+        event.preventDefault();
+    }
+})

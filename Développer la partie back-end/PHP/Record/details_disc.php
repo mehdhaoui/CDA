@@ -33,7 +33,7 @@ $disc = $requete->fetch(PDO::FETCH_OBJ);
 <!--BODY-->
     <body>
     <h1> disc</h1>
-    <img src="assets/img//<?= $disc->disc_picture ?>" width=300 height=100 class="img-fluid " alt="<?= $disc->disc_name ?>"><br>
+    <img src="assets/img/<?= $disc->disc_picture ?>" width=300 height=100 class="img-fluid "><br>
     Disc N° : <?= $disc->disc_id ?><br>
     Disc name : <?= $disc->disc_title ?><br>
     Disc year : <?= $disc->disc_year ?><br>

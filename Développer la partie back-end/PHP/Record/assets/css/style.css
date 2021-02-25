@@ -82,6 +82,24 @@ h2{
     color: red;
     visibility: visible;
 }
+/* icons */
+.form-group i {
+    visibility: hidden;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+}
+
+.form-group.success i.bi bi-check2-circle {
+    color: #2ecc71;
+    visibility: visible;
+}
+
+.form-group.error i.bi bi-x-circle {
+    color: #e74c3c;
+    visibility: visible;
+}
+
 /*LABEL*/
 label{
     font-size: 18px;

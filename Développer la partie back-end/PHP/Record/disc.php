@@ -37,6 +37,15 @@ if ($requete->rowCount() == 0)
                     <li class="nav-item">
                         <a class="nav-link" href="disc.php">Disc</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signup.php">Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Log out</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -68,7 +77,7 @@ if ($requete->rowCount() == 0)
             <td><?=$data['disc_id']?></td>
             <td><a href="details_disc.php?disc_id=<?= $data['disc_id']?>"><?= $data['disc_title']?></a></td>
             <td><?= $data['disc_year'] ?></td>
-            <td><img src="assets\img\<?= $data['disc_picture'] ?>"width=70 height=50 class="img-fluid" alt="<?= $data['disc_title'] ?>"></td>
+            <td><img src="assets\img\<?= $data['disc_picture'] ?>"width=70 height=50 class="img-fluid"></td>
             <td><?= $data['disc_label'] ?></td>
             <td><?= $data['disc_genre'] ?></td>
             <td><?= $data['disc_price']?></td>

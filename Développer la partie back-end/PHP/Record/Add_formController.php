@@ -46,9 +46,28 @@ if(isset($_POST['submit'])){
 
                     // picture
     //Si le champ contient des elements
-    if(!empty($_POST['picture'])){
-        // stockage de la donnée sécurisée dans une variable
-        $picture = $_POST['picture'];
+    if(!empty($_FILES['picture'])){
+        // Données de l'image
+        $file_name = $_FILES['picture']['name'];
+        $file_size =$_FILES['picture']['size'];
+        $file_tmp =$_FILES['picture']['tmp_name'];
+        $file_type=$_FILES['picture']['type'];
+        $fileNameCmps = explode(".", $file_name);
+        $fileExtension = strtolower(end($fileNameCmps));
+        //  déclaration des extensions autorisés pour l'upload de l'image
+        $extensions= array("jpeg","jpg","png");
+        // Si l'extension du fichier ne correspond pas aux extensions autorisés
+        if(in_array($fileExtension,$extensions)=== false){
+            $formError['picture']= "Extension non autorisée";
+        }   else{ //si tout est bon
+                if(move_uploaded_file($file_tmp, 'assets/img/'.$title.'.'.$fileExtension))
+                {
+                    // stockage de la donnée sécurisée dans une variable
+                    $picture = $title.'.'.$fileExtension;
+                }else{
+                    $formError['picture']= "erreur lors de l'upload";
+                }
+            }
     }else{
         $formError['picture'] = 'le champ photo est vide.';
     }

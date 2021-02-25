@@ -37,7 +37,7 @@ $artist = $request->fetch(PDO::FETCH_OBJ);
         ?>
 
     </div>
-    <form action="#" class="form" id="form" name ="form" method="post">
+    <form action="#" class="form" id="form" name ="form" method="post" enctype="multipart/form-data">
 
         <!--TITLE -->
         <div class="form-group">
@@ -58,7 +58,7 @@ $artist = $request->fetch(PDO::FETCH_OBJ);
         <!-- PICTURE -->
         <div class="form-group">
             <label>picture</label>
-            <input class="form-control" type="file" name="picture" id="picture" value="">
+            <input class="form-control" type="file" name="picture" id="picture">
             <small></small>
             <span class="error"><?= isset($formError['picture']) ? $formError['picture'] : ''  ?> </span>
         </div>
