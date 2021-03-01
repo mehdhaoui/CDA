@@ -2,15 +2,15 @@
 //ajout de la page CSS dans le header
 $style = 'style.css';
 //inclusion du header
-include 'header.php';
+include '../common/header.php';
 include "signup_script.php"; //Inclusion du fichier script
-require_once "database.php"; // Inclusion de la connexion a la bdd
+require_once "../common/database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
 ?>
     <!--    BODY AVEC CLASS POUR LE CSS-->
     <body class="formbody">
     <div class="container">
-        <h3 class="text-center"> Formulaire d'inscription</h3>
+        <h class="text-center fs-3"> Formulaire d'inscription</h>
         </header>
         <div class="col-sm-6 offset-sm-3">
             <?php
@@ -19,7 +19,7 @@ $db = connexionBase(); //fonction de connexion a la bdd
                 ?>
                 <p class="text-center">Vos données ont étés insérés dans la base de données.</p>
                 <br>
-                <a class="btn btn-secondary mb-1 " href="disc.php">retour</a>
+                <a class="btn btn-secondary mb-1 " href="../disc.php">retour</a>
                 <?php
             } else {
             ?>
@@ -74,7 +74,7 @@ $db = connexionBase(); //fonction de connexion a la bdd
             <!-- bouton envoyer et retour -->
             <div class="d-grid gap-2  mx-auto">
                 <input type="submit" value="Ajouter" class="btn btn-success" id="submit" name="submit">
-                <a class="btn btn-danger" href="index.php">retour</a>
+                <a class="btn btn-danger" href="../index.php">retour</a>
                 <br>
             </div>
         </form>
@@ -82,6 +82,6 @@ $db = connexionBase(); //fonction de connexion a la bdd
         } ?>
 
     </div> <!-- div container -->
-    </body>
     <!--inclusion du footer-->
-<?php include 'footer.php' ?>
+    <?php include '../common/footer.php' ?>
+    </body>

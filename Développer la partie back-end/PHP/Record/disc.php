@@ -1,8 +1,8 @@
 <?php
 //inclusion du header
-include 'header.php';
+include 'common/header.php';
 // Inclusion de la connexion a la bdd
-require_once "database.php";
+require_once "common/database.php";
 //fonction de connexion a la bdd
 $db = connexionBase();
 // requete + résultat
@@ -22,7 +22,11 @@ if ($requete->rowCount() == 0)
     die("La table est vide");
 }
 ?>
-<!-- NAVBAR-->
+
+<!-- BODY -->
+    <body>
+
+    <!-- NAVBAR-->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="index.php">Accueil</a>
@@ -38,21 +42,20 @@ if ($requete->rowCount() == 0)
                         <a class="nav-link" href="disc.php">Disc</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="signup.php">Signup</a>
+                        <a class="nav-link" href="Signup/signup.php">Signup</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
+                        <a class="nav-link" href="Login/login.php">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Log out</a>
+                        <a class="nav-link" href="Login/logout.php">Log out</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
-<!-- BODY -->
-    <body>
-    <h1> disc</h1> <a  class="btn btn-primary mb-2" href="disc_add.php">ajouter un nouveau disque</a>
+
+    <h class="fs-1"> disc</h> <a  class="btn btn-primary mb-2" href="Add/disc_add.php">ajouter un nouveau disque</a>
 <!--TABLEAU-->
     <table class="table table-hover">
         <thead class="table-dark">
@@ -74,20 +77,21 @@ if ($requete->rowCount() == 0)
         <?php
         foreach($requete as $data)
         {?>
-            <td><?=$data['disc_id']?></td>
-            <td><a href="details_disc.php?disc_id=<?= $data['disc_id']?>"><?= $data['disc_title']?></a></td>
-            <td><?= $data['disc_year'] ?></td>
-            <td><img src="assets\img\<?= $data['disc_picture'] ?>"width=70 height=50 class="img-fluid"></td>
-            <td><?= $data['disc_label'] ?></td>
-            <td><?= $data['disc_genre'] ?></td>
-            <td><?= $data['disc_price']?></td>
-            <td><?= $data['artist_name']?></td>
-            </tr>
+        <tr>
+                <td><?=$data['disc_id']?></td>
+                <td><a href="details_disc.php?disc_id=<?= $data['disc_id']?>" alt="<?= $data['disc_title']?>"><?= $data['disc_title']?> </a></td>
+                <td><?= $data['disc_year'] ?></td>
+                <td><img src="assets\img\<?= $data['disc_picture'] ?>"width=70 height=50 class="img-fluid" alt="<?= $data['disc_title'] ?>"></td>
+                <td><?= $data['disc_label'] ?></td>
+                <td><?= $data['disc_genre'] ?></td>
+                <td><?= $data['disc_price']?></td>
+                <td><?= $data['artist_name']?></td>
+        </tr>
         <?php
         }
         ?>
         </tbody>
     </table>
+    <!--    inclusion du footer-->
+    <?php include 'common/footer.php'; ?>
     </body>
-<!--    inclusion du footer-->
-<?php include 'footer.php'; ?>

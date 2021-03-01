@@ -3,15 +3,15 @@ session_start ();
 //ajout de la page CSS dans le header
 $style = 'style.css';
 //inclusion du header et du script de connexion
-include 'header.php';
+include '../common/header.php';
 include 'login_script.php';
-require_once "database.php"; // Inclusion de la connexion a la bdd
+require_once "../common/database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
 ?>
 <!--    BODY AVEC CLASS POUR LE CSS-->
 <body class="formbody">
 <div class="container">
-    <h3 class="text-center"> Connexion </h3>
+    <h class="text-center fs-3"> Connexion </h>
     </header>
     <div class="col-sm-6 offset-sm-3">
         <?php
@@ -32,7 +32,7 @@ $db = connexionBase(); //fonction de connexion a la bdd
                 "pas ok";
             }
             ?>
-            <a class="btn btn-secondary mb-1 " href="index.php">retour</a>
+            <a class="btn btn-secondary mb-1 " href="../index.php">retour</a>
             <?php
         } else {
         ?>
@@ -42,7 +42,7 @@ $db = connexionBase(); //fonction de connexion a la bdd
 
         <!--Email -->
         <div class="form-group">
-            <label>Email</label>
+            <label for="email">Email</label>
             <input type="texte" class="form-control" placeholder="email" id="email" name="email"
                    value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
             <i class="bi bi-check2-circle"></i>
@@ -53,7 +53,7 @@ $db = connexionBase(); //fonction de connexion a la bdd
 
         <!--PASSWORD -->
         <div class="form-group">
-            <label>password</label>
+            <label for="password">password</label>
             <input type="password" class="form-control" placeholder="password" id="password" name="password"
                    value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>">
             <i class="bi bi-check2-circle"></i>
@@ -64,7 +64,7 @@ $db = connexionBase(); //fonction de connexion a la bdd
             <!-- bouton envoyer et retour -->
             <div class="d-grid gap-2  mx-auto">
                 <input type="submit" value="Ajouter" class="btn btn-success" id="submit" name="submit">
-                <a class="btn btn-danger" href="index.php">retour</a>
+                <a class="btn btn-danger" href="../index.php">retour</a>
                 <br>
             </div>
         </div>
@@ -76,6 +76,6 @@ $db = connexionBase(); //fonction de connexion a la bdd
         } ?>
 
 </div> <!-- div container -->
+<!--inclusion du footer-->
+<?php include '../common/footer.php' ?>
 </body>
-    <!--inclusion du footer-->
-<?php include 'footer.php' ?>

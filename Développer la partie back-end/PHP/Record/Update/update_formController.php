@@ -1,5 +1,5 @@
 <?php
-require_once "database.php"; // Inclusion de la connexion a la bdd
+require_once "../common/database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
 // tableau d'erreur
 $formError =[];
@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
         if(in_array($fileExtension,$extensions)=== false){
             $formError['picture']= "Extension non autorisée";
         }   else{ //si tout est bon
-            if(move_uploaded_file($file_tmp, 'assets/img/'.$title.'.'.$fileExtension))
+            if(move_uploaded_file($file_tmp, '../assets/img/'.$title.'.'.$fileExtension))
             {
                 // stockage de la donnée sécurisée dans une variable
                 $picture = $title.'.'.$fileExtension;
@@ -126,9 +126,21 @@ if(isset($_POST['submit'])){
 
     // requête de modification des données si envoi du formulaire avec succès
     if (isset($_POST['submit']) && count($formError) === 0) {
-        $requete = "UPDATE disc
-SET disc_title ='$title', disc_year ='$year' ,disc_picture='$picture',disc_genre ='$genre',disc_label ='$label', disc_price ='$price', artist_id='$artistid' WHERE disc_id ='".$_GET['disc_id']."'";
-        $result = $db->query($requete);
+        // requetes préparés
+        $sql="UPDATE disc
+            SET disc_title=:title, disc_year=:year, disc_picture=:picture,disc_label=:label,
+                disc_genre=:genre,disc_price=:price,artist_id=:artist
+            WHERE disc_id=:id";
+        $query=$db->prepare($sql);
+        $query->execute(array(
+            'title'=>$title,
+            'year'=>$year,
+            'picture'=>$picture,
+            'label'=>$label,
+            'genre'=>$genre,
+            'price'=>$price,
+            'artist'=>$artistid,
+            'id'=>$_GET['disc_id']));
     }else{
         echo "error";
     }

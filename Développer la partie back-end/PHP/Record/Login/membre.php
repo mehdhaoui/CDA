@@ -3,15 +3,15 @@ session_start ();
 //ajout de la page CSS dans le header
 $style = 'style.css';
 //inclusion du header et du script de connexion
-include 'header.php';
+include '../common/header.php';
 include 'login_script.php';
-require_once "database.php"; // Inclusion de la connexion a la bdd
+require_once "../common/database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
 ?>
     <!--    BODY AVEC CLASS POUR LE CSS-->
     <body class="formbody">
     <div class="container">
-        <h3 class="text-center"> Page de membre </h3>
+        <h class="text-center fs-3"> Page de membre </h>
         </header>
         <div class="col-sm-6 offset-sm-3">
             <?php
@@ -33,10 +33,10 @@ $db = connexionBase(); //fonction de connexion a la bdd
 
         </div>
 
-        <a class="btn btn-secondary mb-1 " href="index.php">retour</a>
+        <a class="btn btn-secondary mb-1 " href="../index.php">retour</a>
     </div>
 
     </div> <!-- div container -->
-    </body>
     <!--inclusion du footer-->
-<?php include 'footer.php' ?>
+    <?php include '../common/footer.php' ?>
+    </body>

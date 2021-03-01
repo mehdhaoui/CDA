@@ -1,5 +1,5 @@
 <?php
-require_once "database.php"; // Inclusion de la connexion a la bdd
+require_once "../common/database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
 // tableau d'erreur
 $formError =[];

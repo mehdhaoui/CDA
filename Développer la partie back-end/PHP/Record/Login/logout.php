@@ -23,20 +23,22 @@ session_destroy();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
+<!-- BODY -->
+<body>
 <!-- NAVBAR-->
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.php">Accueil</a>
+        <a class="navbar-brand" href="../index.php">Accueil</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="artist.php">Artist</a>
+                    <a class="nav-link" href="../artist.php">Artist</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="disc.php">Disc</a>
+                    <a class="nav-link" href="../disc.php">Disc</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php">Login</a>
@@ -48,9 +50,8 @@ session_destroy();
         </div>
     </nav>
 </header>
-<body>
 <p>Session détruite.</p>
-<a class="btn btn-danger" href="index.php">retour</a>
-</body>
+<a class="btn btn-danger" href="../index.php">retour</a>
 <!--    inclusion du footer-->
-<?php include 'footer.php'; ?>
+<?php include '../common/footer.php'; ?>
+</body>

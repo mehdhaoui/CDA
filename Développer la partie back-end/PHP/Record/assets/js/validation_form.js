@@ -8,6 +8,7 @@ const label = document.getElementById('label');
 const genre = document.getElementById('genre');
 const price = document.getElementById('price');
 const artistname = document.getElementById('artistid');
+var sub=document.getElementById("submit");
 
 //Creation tableau d'erreur
 var tab= [];
@@ -159,21 +160,23 @@ form.addEventListener('focusout',(e)=>{
     checkInputs();
 });
 
-var ok=true; // boolean true seulement si les saisies sont correctes
+
+
+var Validation=true; // test de validation avec un booleen, si le tableau contient des erreurs, validation = false
 
 //submit
-var sub=document.getElementById("submit");
+
 sub.addEventListener("click",function (event){
     checkInputs();
     for (var i=0; i< tab.length;i++){
         if (tab[i] ==false){
-            ok=false;
+            Validation=false;
         }else{
-            ok=true;
+            Validation=true;
         }
     }
-
-    if (ok==true) {
+// envoi du formulaire si validation = true
+    if (Validation==true) {
         form.submit();
     }else {
         event.preventDefault();

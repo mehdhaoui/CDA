@@ -1,5 +1,5 @@
 <?php
-require_once "database.php"; // Inclusion de la connexion a la bdd
+require_once "../common/database.php"; // Inclusion de la connexion a la bdd
 $db = connexionBase(); //fonction de connexion a la bdd
 //requête de suppression
 $requete = $db->prepare("DELETE FROM disc WHERE disc_id ='".$_GET['disc_id']."'");
